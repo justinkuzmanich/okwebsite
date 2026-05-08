@@ -789,6 +789,14 @@ footer > * { position: relative; }
           <div class="testi-role">Inverness</div>
         </div>
       </div>
+      <div class="testi-card">
+        <span class="testi-avatar default" role="img" aria-label="OK Computer"><img src="images/logo.png" alt=""></span>
+        <p class="testi-quote">&ldquo;Showed up the same day I called and had us back online before lunch. A real lifesaver.&rdquo;</p>
+        <div>
+          <div class="testi-name">Marie Delgado</div>
+          <div class="testi-role">Point Reyes Station</div>
+        </div>
+      </div>
     </div>
     <button class="testi-arrow testi-arrow-next" id="testiNext" aria-label="Next testimonial">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
@@ -958,14 +966,17 @@ function closeMenu() {
   function visibleCount() {
     return Math.max(1, Math.round(track.getBoundingClientRect().width / cardStep()));
   }
+  function pageStep() {
+    return cardStep() * visibleCount();
+  }
   function stops() {
-    return Math.max(1, cards.length - visibleCount() + 1);
+    return Math.max(1, Math.ceil(cards.length / visibleCount()));
   }
   function currentIndex() {
-    return Math.min(stops() - 1, Math.round(track.scrollLeft / cardStep()));
+    return Math.min(stops() - 1, Math.round(track.scrollLeft / pageStep()));
   }
   function scrollToIndex(i) {
-    track.scrollTo({ left: cardStep() * i, behavior: 'smooth' });
+    track.scrollTo({ left: pageStep() * i, behavior: 'smooth' });
   }
   function buildDots() {
     const n = stops();
