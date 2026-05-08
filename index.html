@@ -966,17 +966,14 @@ function closeMenu() {
   function visibleCount() {
     return Math.max(1, Math.round(track.getBoundingClientRect().width / cardStep()));
   }
-  function pageStep() {
-    return cardStep() * visibleCount();
-  }
   function stops() {
-    return Math.max(1, Math.ceil(cards.length / visibleCount()));
+    return Math.max(1, cards.length - visibleCount() + 1);
   }
   function currentIndex() {
-    return Math.min(stops() - 1, Math.round(track.scrollLeft / pageStep()));
+    return Math.min(stops() - 1, Math.round(track.scrollLeft / cardStep()));
   }
   function scrollToIndex(i) {
-    track.scrollTo({ left: pageStep() * i, behavior: 'smooth' });
+    track.scrollTo({ left: cardStep() * i, behavior: 'smooth' });
   }
   function buildDots() {
     const n = stops();
