@@ -7,14 +7,14 @@
 <title>OK Computer — Mac & PC Repair, IT Support | West Marin, CA</title>
 <meta name="facebook-domain-verification" content="e1tlkzojnv3n7onnvc1toc6zgunm2j" />
 <meta name="description" content="West Marin's trusted IT expert since 1998. Mac & PC repair, networking, security cameras, home entertainment and more. Same-day service. Call Matt at 415-272-6749.">
-<link rel="canonical" href="https://matt-gallagher-ok.github.io/okwebsite/">
+<link rel="canonical" href="https://justinkuzmanich.github.io/okwebsite/">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://matt-gallagher-ok.github.io/okwebsite/">
+<meta property="og:url" content="https://justinkuzmanich.github.io/okwebsite/">
 <meta property="og:title" content="OK Computer — Mac & PC Repair, laptops IT Support | West Marin, CA">
 <meta property="og:description" content="West Marin's trusted IT expert since 1998. Mac & PC repair, networking, security cameras, home entertainment and more. Same-day service. Call Matt at 415-272-6749.">
-<meta property="og:image" content="https://matt-gallagher-ok.github.io/okwebsite/images/hero-matt-bw-900.jpg">
+<meta property="og:image" content="https://justinkuzmanich.github.io/okwebsite/images/hero-matt-bw-900.jpg">
 <meta name="twitter:card" content="summary_large_image">
 
 <!-- Local Business Structured Data -->
@@ -24,11 +24,11 @@
   "@type": ["LocalBusiness", "ProfessionalService"],
   "name": "OK Computer",
   "description": "Home and business IT support in West Marin, CA. Mac & PC repair, networking, security, home entertainment, and more since 1998.",
-  "url": "https://matt-gallagher-ok.github.io/okwebsite/",
+  "url": "https://justinkuzmanich.github.io/okwebsite/",
   "telephone": "+14152726749",
   "email": "help@ok-computer.net",
   "foundingDate": "1998",
-  "image": "https://matt-gallagher-ok.github.io/okwebsite/images/hero-matt-bw-900.jpg",
+  "image": "https://justinkuzmanich.github.io/okwebsite/images/hero-matt-bw-900.jpg",
   "address": {
     "@type": "PostalAddress",
     "addressLocality": "West Marin",
@@ -293,13 +293,45 @@ nav {
 }
 .testi-heading { font-size: 52px; font-weight: 800; color: var(--text); }
 .testi-eyebrow { font-size: 18px; font-weight: 300; color: var(--muted); max-width: 320px; }
-.testi-grid {
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px;
+.testi-carousel { position: relative; }
+.testi-track {
+  display: flex; gap: 32px;
+  overflow-x: auto; scroll-snap-type: x mandatory;
+  scroll-behavior: smooth;
+  -ms-overflow-style: none; scrollbar-width: none;
 }
+.testi-track::-webkit-scrollbar { display: none; }
 .testi-card {
   background: #ffffff; padding: 40px 32px;
   display: flex; flex-direction: column; gap: 20px;
+  flex: 0 0 calc((100% - 64px) / 3);
+  scroll-snap-align: start;
 }
+.testi-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--white); border: 1px solid var(--border);
+  color: var(--text); cursor: pointer; z-index: 5;
+  display: flex; align-items: center; justify-content: center;
+  transition: background 0.2s, color 0.2s, opacity 0.2s;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+.testi-arrow:hover { background: var(--accent); color: var(--white); border-color: var(--accent); }
+.testi-arrow:disabled { opacity: 0.3; cursor: default; }
+.testi-arrow:disabled:hover { background: var(--white); color: var(--text); border-color: var(--border); }
+.testi-arrow-prev { left: -22px; }
+.testi-arrow-next { right: -22px; }
+.testi-dots {
+  display: flex; justify-content: center; gap: 12px;
+  margin-top: 32px;
+}
+.testi-dot {
+  width: 10px; height: 10px; border-radius: 50%;
+  background: rgba(9,9,9,0.2); border: none; padding: 0;
+  cursor: pointer; transition: background 0.2s, transform 0.2s;
+}
+.testi-dot:hover { background: rgba(9,9,9,0.4); }
+.testi-dot.active { background: var(--accent); transform: scale(1.3); }
 .testi-avatar {
   width: 72px; height: 72px; border-radius: 50%;
   object-fit: cover; filter: grayscale(30%); flex-shrink: 0;
@@ -345,7 +377,8 @@ nav {
 .contact-row:first-child { border-top: 1px solid rgba(255,255,255,0.12); }
 .contact-key {
   font-size: 15px; font-weight: 700; letter-spacing: 0.14em;
-  text-transform: uppercase; color: var(--accent); min-width: 68px;
+  text-transform: uppercase; color: var(--accent);
+  flex: 0 0 100px;
   padding-top: 2px;
 }
 .contact-val { font-weight: 300; color: var(--white); }
@@ -439,7 +472,9 @@ footer > * { position: relative; }
   .stats-grid { grid-column: 1; grid-template-columns: 1fr 1fr; }
   .stat { border-left: none; padding: 32px 20px; }
   #testimonials { padding: 60px 20px; }
-  .testi-grid { grid-template-columns: 1fr; }
+  .testi-card { flex: 0 0 100%; }
+  .testi-arrow-prev { left: 4px; }
+  .testi-arrow-next { right: 4px; }
   #contact { grid-template-columns: 1fr; }
   .contact-left { padding: 60px 20px; }
   .contact-right { padding: 0 0 60px 0; border-right: none; }
@@ -710,32 +745,65 @@ footer > * { position: relative; }
       <h2 class="testi-heading">Testimonials</h2>
     </div>
   </div>
-  <div class="testi-grid">
-    <div class="testi-card">
-      <img class="testi-avatar" src="images/testimonial-1.avif" alt="Sarah Chel">
-      <p class="testi-quote">&ldquo;Matt's strategic approach and deep understanding of digital technology transformed our online presence.&rdquo;</p>
-      <div>
-        <div class="testi-name">Sarah Chel</div>
-        <div class="testi-role">CEO of TechGrowz Solutions</div>
+  <div class="testi-carousel">
+    <button class="testi-arrow testi-arrow-prev" id="testiPrev" aria-label="Previous testimonial">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+    </button>
+    <div class="testi-track" id="testiTrack">
+      <div class="testi-card">
+        <img class="testi-avatar" src="images/testimonial-1.avif" alt="Sarah Chel">
+        <p class="testi-quote">&ldquo;Matt's strategic approach and deep understanding of digital technology transformed our online presence.&rdquo;</p>
+        <div>
+          <div class="testi-name">Sarah Chel</div>
+          <div class="testi-role">CEO of TechGrowz Solutions</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="testi-avatar default" role="img" aria-label="OK Computer"><img src="images/logo.png" alt=""></span>
+        <p class="testi-quote">&ldquo;Fast, knowledgeable, and genuinely cares about getting it right. Matt fixed a networking issue in under an hour that had plagued our office for weeks.&rdquo;</p>
+        <div>
+          <div class="testi-name">Janine Fox</div>
+          <div class="testi-role">CloudSov Solutions</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <img class="testi-avatar" src="images/testimonial-3.avif" alt="Joe Harris">
+        <p class="testi-quote">&ldquo;Having a local tech expert you can actually trust is invaluable. Matt is our go-to for everything computer-related.&rdquo;</p>
+        <div>
+          <div class="testi-name">Joe Harris</div>
+          <div class="testi-role">SmileBright Dental</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="testi-avatar default" role="img" aria-label="OK Computer"><img src="images/logo.png" alt=""></span>
+        <p class="testi-quote">&ldquo;Matt has been our go-to for tech for years. Always fast, always patient, and always solves the problem.&rdquo;</p>
+        <div>
+          <div class="testi-name">Anna Reyes</div>
+          <div class="testi-role">West Marin Resident</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="testi-avatar default" role="img" aria-label="OK Computer"><img src="images/logo.png" alt=""></span>
+        <p class="testi-quote">&ldquo;Set up our home network, TV, and sound system — everything just works. Worth every penny.&rdquo;</p>
+        <div>
+          <div class="testi-name">Tom Bridger</div>
+          <div class="testi-role">Inverness</div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <span class="testi-avatar default" role="img" aria-label="OK Computer"><img src="images/logo.png" alt=""></span>
+        <p class="testi-quote">&ldquo;Showed up the same day I called and had us back online before lunch. A real lifesaver.&rdquo;</p>
+        <div>
+          <div class="testi-name">Marie Delgado</div>
+          <div class="testi-role">Point Reyes Station</div>
+        </div>
       </div>
     </div>
-    <div class="testi-card">
-      <span class="testi-avatar default" role="img" aria-label="OK Computer"><img src="images/logo.png" alt=""></span>
-      <p class="testi-quote">&ldquo;Fast, knowledgeable, and genuinely cares about getting it right. Matt fixed a networking issue in under an hour that had plagued our office for weeks.&rdquo;</p>
-      <div>
-        <div class="testi-name">Janine Fox</div>
-        <div class="testi-role">CloudSov Solutions</div>
-      </div>
-    </div>
-    <div class="testi-card">
-      <img class="testi-avatar" src="images/testimonial-3.avif" alt="Joe Harris">
-      <p class="testi-quote">&ldquo;Having a local tech expert you can actually trust is invaluable. Matt is our go-to for everything computer-related.&rdquo;</p>
-      <div>
-        <div class="testi-name">Joe Harris</div>
-        <div class="testi-role">SmileBright Dental</div>
-      </div>
-    </div>
+    <button class="testi-arrow testi-arrow-next" id="testiNext" aria-label="Next testimonial">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+    </button>
   </div>
+  <div class="testi-dots" id="testiDots"></div>
 </section>
 
 <!-- CONTACT -->
@@ -874,10 +942,73 @@ function closeMenu() {
   revealGroup('.stat', 0.08);
   // Testimonials
   revealEl('.testi-top');
-  revealGroup('.testi-card', 0.1);
+  revealEl('.testi-carousel', 0.05);
+  revealEl('.testi-dots', 0.15);
   // Contact
   revealEl('.contact-left');
   revealEl('.contact-right', 0.1);
+})();
+
+(function() {
+  const track = document.getElementById('testiTrack');
+  if (!track) return;
+  const dotsCt = document.getElementById('testiDots');
+  const prev = document.getElementById('testiPrev');
+  const next = document.getElementById('testiNext');
+  const cards = Array.from(track.querySelectorAll('.testi-card'));
+  let dots = [];
+
+  function cardStep() {
+    const r = cards[0].getBoundingClientRect();
+    const styles = getComputedStyle(track);
+    const gap = parseFloat(styles.columnGap || styles.gap) || 0;
+    return r.width + gap;
+  }
+  function visibleCount() {
+    return Math.max(1, Math.round(track.getBoundingClientRect().width / cardStep()));
+  }
+  function stops() {
+    return Math.max(1, cards.length - visibleCount() + 1);
+  }
+  function currentIndex() {
+    return Math.min(stops() - 1, Math.round(track.scrollLeft / cardStep()));
+  }
+  function scrollToIndex(i) {
+    track.scrollTo({ left: cardStep() * i, behavior: 'smooth' });
+  }
+  function buildDots() {
+    const n = stops();
+    dotsCt.innerHTML = '';
+    dots = [];
+    for (let i = 0; i < n; i++) {
+      const b = document.createElement('button');
+      b.className = 'testi-dot';
+      b.setAttribute('aria-label', 'Go to slide ' + (i + 1));
+      b.addEventListener('click', () => scrollToIndex(i));
+      dotsCt.appendChild(b);
+      dots.push(b);
+    }
+    update();
+  }
+  function update() {
+    const i = currentIndex();
+    dots.forEach((d, di) => d.classList.toggle('active', di === i));
+    prev.disabled = i <= 0;
+    next.disabled = i >= dots.length - 1;
+  }
+  prev.addEventListener('click', () => scrollToIndex(Math.max(0, currentIndex() - 1)));
+  next.addEventListener('click', () => scrollToIndex(Math.min(stops() - 1, currentIndex() + 1)));
+  let scrollRaf;
+  track.addEventListener('scroll', () => {
+    if (scrollRaf) cancelAnimationFrame(scrollRaf);
+    scrollRaf = requestAnimationFrame(update);
+  });
+  let resizeT;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeT);
+    resizeT = setTimeout(buildDots, 150);
+  });
+  buildDots();
 })();
 
 async function handleSubmit(e) {
