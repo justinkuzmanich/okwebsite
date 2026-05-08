@@ -45,12 +45,15 @@
     "@type": "OfferCatalog",
     "name": "IT Services",
     "itemListElement": [
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Computer Repair"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Computer Support and Repair"}},
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Networking"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Security"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Security Cameras"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Smartphone and Tablet Support"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Security and Identity Management"}},
       {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Home Entertainment"}},
-      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Technology Tutoring"}}
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Technology Tutoring"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Security Cameras"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Business Solutions"}},
+      {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom Tech Solutions"}}
     ]
   }
 }
@@ -302,6 +305,12 @@ nav {
   object-fit: cover; filter: grayscale(30%); flex-shrink: 0;
   margin-top: 4px;
 }
+.testi-avatar.default {
+  background: var(--accent);
+  display: inline-flex; align-items: center; justify-content: center;
+  filter: none; overflow: hidden;
+}
+.testi-avatar.default img { max-width: 70%; max-height: 70%; display: block; }
 .testi-quote { font-size: 20px; font-weight: 300; color: var(--text); line-height: 1.75; flex: 1; font-style: italic; }
 .testi-name { font-size: 18px; font-weight: 700; color: var(--text); }
 .testi-role { font-size: 16px; font-weight: 400; color: var(--muted); text-transform: uppercase; letter-spacing: 0.08em; }
@@ -515,8 +524,8 @@ footer > * { position: relative; }
       </div>
       <div class="svc-content">
         <div class="svc-num">01</div>
-        <div class="svc-name">Computer Repair</div>
-        <p class="svc-desc">From Mac laptops to PCs and workstations, OK Computer has all your repair needs covered.</p>
+        <div class="svc-name">Computer Support / Repair</div>
+        <p class="svc-desc">From Mac laptops to PCs and workstations, OK Computer has all your support and repair needs covered.</p>
       </div>
     </div>
 
@@ -544,32 +553,34 @@ footer > * { position: relative; }
     <div class="svc-row">
       <div class="svc-icon-cell">
         <svg class="svc-icon" stroke="white" width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <path d="M24 6L8 14V24C8 33 15.5 41.2 24 44C32.5 41.2 40 33 40 24V14L24 6Z" stroke="white" stroke-width="2.5"/>
-          <polyline points="17,24 22,29 31,20" stroke="#016d90" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <!-- Tablet -->
+          <rect x="4" y="10" width="20" height="28" rx="2" stroke="white" stroke-width="2.5"/>
+          <rect x="7" y="13" width="14" height="20" rx="1" stroke="#016d90" stroke-width="2.5"/>
+          <circle cx="14" cy="36" r="1" fill="white"/>
+          <!-- Phone -->
+          <rect x="28" y="14" width="16" height="24" rx="2" stroke="white" stroke-width="2.5"/>
+          <rect x="31" y="17" width="10" height="16" rx="1" stroke="#016d90" stroke-width="2.5"/>
+          <circle cx="36" cy="36" r="1" fill="white"/>
         </svg>
       </div>
       <div class="svc-content">
         <div class="svc-num">03</div>
-        <div class="svc-name">Security</div>
-        <p class="svc-desc">Protect your data and devices with professional security assessments and best-practice configuration.</p>
+        <div class="svc-name">Smartphones / Tablets</div>
+        <p class="svc-desc">Setup, troubleshooting, and support for iPhones, iPads, Android phones and tablets — backups, transfers, and getting everything talking.</p>
       </div>
     </div>
 
     <div class="svc-row">
       <div class="svc-icon-cell">
         <svg class="svc-icon" stroke="white" width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <circle cx="24" cy="22" r="10" stroke="white" stroke-width="2.5"/>
-          <circle cx="24" cy="22" r="3" fill="#016d90"/>
-          <line x1="24" y1="32" x2="24" y2="42" stroke="white" stroke-width="2.5"/>
-          <line x1="16" y1="42" x2="32" y2="42" stroke="white" stroke-width="2.5"/>
-          <path d="M14 12 Q10 8 8 10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
-          <path d="M34 12 Q38 8 40 10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M24 6L8 14V24C8 33 15.5 41.2 24 44C32.5 41.2 40 33 40 24V14L24 6Z" stroke="white" stroke-width="2.5"/>
+          <polyline points="17,24 22,29 31,20" stroke="#016d90" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
         </svg>
       </div>
       <div class="svc-content">
         <div class="svc-num">04</div>
-        <div class="svc-name">Security Cameras</div>
-        <p class="svc-desc">Professional installation and configuration of home and business security camera systems.</p>
+        <div class="svc-name">Security / Identity Management</div>
+        <p class="svc-desc">Protect your data, devices, and online identity with security assessments, password management, and best-practice configuration.</p>
       </div>
     </div>
 
@@ -613,13 +624,51 @@ footer > * { position: relative; }
     <div class="svc-row">
       <div class="svc-icon-cell">
         <svg class="svc-icon" stroke="white" width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="24" cy="22" r="10" stroke="white" stroke-width="2.5"/>
+          <circle cx="24" cy="22" r="3" fill="#016d90"/>
+          <line x1="24" y1="32" x2="24" y2="42" stroke="white" stroke-width="2.5"/>
+          <line x1="16" y1="42" x2="32" y2="42" stroke="white" stroke-width="2.5"/>
+          <path d="M14 12 Q10 8 8 10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <path d="M34 12 Q38 8 40 10" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+        </svg>
+      </div>
+      <div class="svc-content">
+        <div class="svc-num">07</div>
+        <div class="svc-name">Security Cameras</div>
+        <p class="svc-desc">Professional installation and configuration of home and business security camera systems.</p>
+      </div>
+    </div>
+
+    <div class="svc-row">
+      <div class="svc-icon-cell">
+        <svg class="svc-icon" stroke="white" width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Briefcase handle -->
+          <path d="M19 13 V10 a2 2 0 0 1 2 -2 h6 a2 2 0 0 1 2 2 v3" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+          <!-- Briefcase body -->
+          <rect x="6" y="13" width="36" height="27" rx="2" stroke="white" stroke-width="2.5"/>
+          <!-- Center divider line -->
+          <line x1="6" y1="24" x2="42" y2="24" stroke="white" stroke-width="2.5"/>
+          <!-- Latch -->
+          <rect x="20" y="22" width="8" height="4" rx="0.5" stroke="#016d90" stroke-width="2.5"/>
+        </svg>
+      </div>
+      <div class="svc-content">
+        <div class="svc-num">08</div>
+        <div class="svc-name">Business Solutions</div>
+        <p class="svc-desc">IT support tailored for small business — workstation setup, file servers, backup strategies, automation, database support, scripting, POS integrations, and ongoing maintenance.</p>
+      </div>
+    </div>
+
+    <div class="svc-row">
+      <div class="svc-icon-cell">
+        <svg class="svc-icon" stroke="white" width="64" height="64" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="24" cy="24" r="16" stroke="white" stroke-width="2.5" stroke-dasharray="4 3"/>
           <line x1="24" y1="16" x2="24" y2="32" stroke="#016d90" stroke-width="2" stroke-linecap="round"/>
           <line x1="16" y1="24" x2="32" y2="24" stroke="#016d90" stroke-width="2" stroke-linecap="round"/>
         </svg>
       </div>
       <div class="svc-content">
-        <div class="svc-num">07</div>
+        <div class="svc-num">09</div>
         <div class="svc-name">Custom</div>
         <p class="svc-desc">Need something unique? If you have a specific tech challenge, let's talk about it and make it happen.</p>
       </div>
@@ -671,7 +720,7 @@ footer > * { position: relative; }
       </div>
     </div>
     <div class="testi-card">
-      <img class="testi-avatar" src="images/testimonial-2.avif" alt="Janine Fox">
+      <span class="testi-avatar default" role="img" aria-label="OK Computer"><img src="images/logo.png" alt=""></span>
       <p class="testi-quote">&ldquo;Fast, knowledgeable, and genuinely cares about getting it right. Matt fixed a networking issue in under an hour that had plagued our office for weeks.&rdquo;</p>
       <div>
         <div class="testi-name">Janine Fox</div>
@@ -744,16 +793,15 @@ footer > * { position: relative; }
           <label class="form-lbl">I'm Interested In</label>
           <select class="form-ctrl" name="service">
             <option value="">Select</option>
-            <option>Computer Repair</option>
-            <option>Smart Phone Support</option>
-            <option>Backup</option>
-            <option>Data Recovery</option>
+            <option>Computer Support / Repair</option>
             <option>Networking</option>
-            <option>Security</option>
-            <option>Security Cameras</option>
+            <option>Smartphones / Tablets</option>
+            <option>Security / Identity Management</option>
             <option>Home Entertainment</option>
             <option>Tutoring</option>
-            <option>Other</option>
+            <option>Security Cameras</option>
+            <option>Business Solutions</option>
+            <option>Custom</option>
           </select>
       </div>
       <div class="form-group">
