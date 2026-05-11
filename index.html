@@ -878,6 +878,7 @@ Highly recommended.&rdquo;</p>
         <label class="form-lbl">Message *</label>
         <textarea class="form-ctrl" name="message" placeholder="Enter your message" required></textarea>
       </div>
+      <div class="h-captcha" data-captcha="true" style="margin-bottom: 16px;"></div>
       <button type="submit" class="form-submit">Submit</button>
     </form>
     </div>
@@ -1019,10 +1020,11 @@ async function handleSubmit(e) {
   btn.textContent = 'Sending…';
   btn.disabled = true;
   try {
+    const formData = new FormData(e.target);
     const res = await fetch('https://api.web3forms.com/submit', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-      body: JSON.stringify(Object.fromEntries(new FormData(e.target)))
+      headers: { Accept: 'application/json' },
+      body: formData
     });
     const result = await res.json();
     if (result.success) {
@@ -1039,5 +1041,6 @@ async function handleSubmit(e) {
   }
 }
 </script>
+<script src="https://web3forms.com/client/script.js" async defer></script>
 </body>
 </html>
